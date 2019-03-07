@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-4"></div>
+  <div class="col-4">
+<button class="btn btn-danger btn-large">All Drives</button>
+<button *ngIf="!showSkills" (click)="showSkills=true" class="btn btn-danger btn-large">Add Skills</button>
+<!-- <button class="btn btn-danger btn-large" (click)="showCompanies()">Companies</button>
+<button class="btn btn-danger btn-large" (click)="showUsers()">Users</button> -->
+</div>
+<div class="col-3">
+  <button routerLink="/" class="btn btn-warning">Logout</button>
+</div>
+</div>
+<div class="row">
+  <div class="col-4"></div>
+  <div *ngIf="showSkills" class="col-4">
+    <h4>Skills</h4>
+    <input [(ngModel)]="skills" >
+    <button (click)="updateSkills()">Update</button>
+  </div>
+
+</div>
+<!-- <app-drives></app-drives> -->
+<app-user-drives></app-user-drives>

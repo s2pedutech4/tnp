@@ -28,7 +28,7 @@ import * as firebase from 'firebase';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
- 
+import { StorageServiceModule } from 'ngx-webstorage-service';
 var config = {
   apiKey: "AIzaSyBDfUYxLZSjzA8hUPAvtS0gTzMgrD67L0k",
   authDomain: "tnpapp123.firebaseapp.com",
@@ -47,6 +47,7 @@ firebase.initializeApp(config);
     HttpModule,
     ComponentsModule,
     RouterModule,
+    StorageServiceModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'

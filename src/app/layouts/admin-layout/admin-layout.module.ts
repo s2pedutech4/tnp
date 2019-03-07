@@ -26,6 +26,10 @@ import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
+import { UserHomeComponent } from './user-home/user-home.component';
+import { UserDrivesComponent } from './user-drives/user-drives.component';
+import { CompanyHomeComponent } from './company-home/company-home.component';
+import { CompanyStudentsComponent } from './company-students/company-students.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -54,6 +58,10 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
     LoginComponent,
     SignupComponent,
     AdminhomeComponent,
+    UserHomeComponent,
+    UserDrivesComponent,
+    CompanyHomeComponent,
+    CompanyStudentsComponent,
   ]
 })
 

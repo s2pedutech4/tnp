@@ -83,7 +83,7 @@
                     <div class="row">
                       <div class="col-3"><h4 class="card-title ">Drives</h4></div>
                        <div class="col-8"></div> 
-                        <button (click)="showDriveForm()" class="btn btn-warning">Add</button>
+                        <!-- <button (click)="showDriveForm()" class="btn btn-warning">Add</button> -->
                     </div>
                       
                       <p class="card-category">Campus Drives Details</p>
@@ -110,9 +110,8 @@
                                   <td>{{d.jobprofile}}</td>
                                   <td>{{d.location}}</td>
                                   <td>
-                                    <button (click)="editDrive(d)" class="btn btn-small btn-info">Edit/View</button>
-                                    <button (click)="deleteDrive(d)" class="btn btn-small btn-info">Delete</button>
-                                    <button (click)="viewApplicants(d)" class="btn btn-small btn-info">View Applicants</button>
+                                    <button (click)="applyDrive(d)" class="btn btn-small btn-info">Apply</button>
+                                    <!-- <button (click)="deleteDrive(d)" class="btn btn-small btn-info">Delete</button> -->
                                     <!-- <button class="btn btn-small btn-info">Details</button> -->
                                   </td>
                                 </tr>
@@ -122,53 +121,7 @@
                   </div>
               </div>
           </div>
-          
-          <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-danger">
-                  <div class="row">
-                    <div class="col-3"><h4 class="card-title ">Applicants</h4></div>
-                     <div class="col-8"></div> 
-                      <!-- <button (click)="showDriveForm()" class="btn btn-warning">Add</button> -->
-                  </div>
-                    
-                    <p class="card-category">Applicants for the drive</p>
-                    
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                                <th>Sr. No</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <!-- <th></th>
-                                <th>Job Profile</th>
-                                <th>Location</th>
-                                <th>Actions</th> -->
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let d of driveUsers;let i = index">
-                                <td>{{i+1}}</td>
-                                <td>{{d.name}}</td>
-                                <td>{{d.email}}</td>
-                                <!-- <td>{{d.lastappdate}}</td>
-                                <td>{{d.jobprofile}}</td>
-                                <td>{{d.location}}</td> -->
-                                <!-- <td>
-                                  <button (click)="editDrive(d)" class="btn btn-small btn-info">Edit/View</button>
-                                  <button (click)="deleteDrive(d)" class="btn btn-small btn-info">Delete</button>
-                                  <button (click)="viewApplicants(d)" class="btn btn-small btn-info">View Applicants</button>
-                                  <button class="btn btn-small btn-info">Details</button>
-                                </td> -->
-                              </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+         
       </div>
   </div>
 </div>

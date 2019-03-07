@@ -11,7 +11,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {DrivesComponent} from './drives/drives.component';
 import {DrivedetailsComponent} from './drivedetails/drivedetails.component';
 import {AdminhomeComponent} from './adminhome/adminhome.component';
-
+import { UserHomeComponent } from './user-home/user-home.component';
+import { CompanyHomeComponent } from './company-home/company-home.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -58,6 +59,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'admin/home',   component: AdminhomeComponent },
+    { path:  'user/home',   component: UserHomeComponent },
+    { path:  'company/home',   component: CompanyHomeComponent },
     { path: 'college/drives',   component: DrivesComponent },
     { path: 'college/drives/details',   component: DrivedetailsComponent },
     { path: 'table-list',     component: TableListComponent },

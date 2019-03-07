@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
+import { Inject, Injectable } from '@angular/core';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
-  selector: 'app-drives',
-  templateUrl: './drives.component.html',
-  styleUrls: ['./drives.component.scss']
+  selector: 'app-user-drives',
+  templateUrl: './user-drives.component.html',
+  styleUrls: ['./user-drives.component.scss']
 })
-export class DrivesComponent implements OnInit {
-
+export class UserDrivesComponent implements OnInit {
   drives:any = [];
   showForm:boolean = false;
   driveForm:FormGroup = new FormGroup({
@@ -23,15 +24,42 @@ export class DrivesComponent implements OnInit {
     process: new FormControl('',Validators.required),
     lastappdate: new FormControl('', Validators.required)
   });
-  constructor() { }
+  currentUser:any = null;
+  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { }
 
   ngOnInit() {
     firebase.database().ref('drives').on('value', resp => {
-      console.log(resp);
+      // console.log(resp);
       this.drives = snapshotToArray(resp);
     });
+    this.currentUser = this.storage.get('user');
+    console.log(this.currentUser);
+    
   }
 
+  applyDrive(d)
+  {
+    let path ='drives/'+d.key;
+    // apply to the drive under users array
+    firebase.database().ref(path).once('value', resp => {
+      // check if the user already exists
+      firebase.database().ref(path + '/users').orderByChild('key').equalTo(this.currentUser.key).once('value', response => {
+        console.log("after query");
+        let user = snapshotToArray(response);
+        console.log(user);
+        if(user.length == 0)
+        {
+          firebase.database().ref(path + '/users').push(this.currentUser);
+          alert("Applied Successfully");
+        }
+        else
+        {
+          alert("You have already applied for this drive");
+        }
+      });
+      //firebase.database().ref(path + '/users').push(this.currentUser);
+    });
+  }
   AddDrive()
   {
     console.log(this.driveForm.value);
@@ -54,18 +82,6 @@ export class DrivesComponent implements OnInit {
   {
     let path = "drives/" + d.key;
     firebase.database().ref(path).remove();
-  }
-
-  driveUsers:any = [];
-  showAppl:boolean = false;
-  viewApplicants(d)
-  {
-    // view applicants of the drive
-    let path = 'drives/' + d.key + '/users';
-    firebase.database().ref(path).on('value', resp => {
-      this.driveUsers = snapshotToArray(resp);
-      this.showAppl = true;
-    });
   }
 
   showDriveForm()
